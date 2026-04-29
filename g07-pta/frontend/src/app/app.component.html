@@ -1,0 +1,11 @@
+<main class="main">
+  <div class="header">
+    <app-header (roleChange)="onRoleChange($event)"></app-header>
+  </div>
+  <div class="layout">
+    <app-navbar class="child" />
+    <app-content class="child2" [userRole]="currentRole"/>
+  </div>
+</main>
+
+<router-outlet />

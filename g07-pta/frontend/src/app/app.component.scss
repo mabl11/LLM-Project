@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+}
+
+.layout {
+  display: flex;
+}
+
+.layout .child {
+  width: 10%;
+  height: 91.7vh;
+  background-color: #3c9ffa;
+}
+
+.layout .child2 {
+  width: 90%;
+  background-color: #5B6B7A;
+}

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Please Login</h2>
+<mat-dialog-content>
+  <mat-error *ngIf="!validLogin">Invalid username or password</mat-error>
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="username" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="isAutherized()">Login</button>
+  <button mat-button (click)="noLogin()">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,71 @@
+@if (discussion.length == 0){
+  <div class="empty">
+    <p>Start a conversation</p>
+  </div>
+}
+
+@if (discussion.length > 0) {
+  <cdk-virtual-scroll-viewport [itemSize]="100" class="viewport">
+    <div class="contentLayout">
+      <div *cdkVirtualFor="let item of discussion"
+           [class.user]="item.isUser"
+           [class.ai]="!item.isUser">
+
+        <mat-card appearance="raised">
+          <mat-card-content>
+            @if (!item.isUser && item.role) {
+              <div class="role-info">
+                Role: {{ item.role }}
+              </div>
+            }
+            <p>{{ item.text }}</p>
+
+            @if (item.sources && item.sources.length > 0) {
+              <div class="sources-container">
+                <span class="source-label">Gefunden in:</span>
+
+                <div class="source-list">
+                  <ul>
+                  @for (source of item.sources; track source.id) {
+
+                    <div class="source-item">
+                      <li>
+                        <a [href]="'http://localhost:8085/api/files/' + source.id + '/' + source.name"
+                           target="_blank"
+                           class="file-link"
+                           title="Dokument in Browser öffnen">
+                          {{ source.name }}
+                        </a>
+                      </li>
+
+                      <div class="path-info">
+                        <small (click)="copyPath(source.path)" title="Pfad in Zwischenablage kopieren">Ablage: {{ source.path }}</small>
+                      </div>
+                    </div>
+                  }
+                  </ul>
+                </div>
+              </div>
+            }
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+}
+
+<form class="form" (ngSubmit)="onSubmit()">
+  <div class="inputwrapper">
+    <input
+      class="form-child1"
+      type="text"
+      placeholder="How can I help?"
+      [formControl]="input"
+    >
+
+    <button type="submit" class="form-child2">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+{
+  "default": {
+    "documentPath": "documents"
+  },
+  "HR": {
+    "documentPath": "confidential/hr"
+  },
+  "Developer": {
+    "documentPath": "confidential/rnd"
+  },
+  "FinanceBro": {
+    "documentPath": "confidential/finance"
+  }
+}

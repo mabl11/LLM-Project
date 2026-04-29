@@ -1,0 +1,13 @@
+<mat-toolbar class="header" primary>
+  <span>Clippy</span>
+  <span class="flex"> </span>
+
+  <mat-form-field appearance="outline" class="role-select">
+    <mat-label>Role</mat-label>
+    <mat-select [(value)]="currentRole" (selectionChange)="onRoleChange($event.value)">
+      <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-icon>code</mat-icon>
+</mat-toolbar>
